@@ -1,8 +1,7 @@
 var mongoose=require('mongoose');
  
 var FunnelSchema = new mongoose.Schema({
-    FunnelId:Number,
-    Token:String,
+    ClientID: Number,
     Description:String,
     Title:String,
     Price:Number,

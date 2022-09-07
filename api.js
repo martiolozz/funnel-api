@@ -21,8 +21,7 @@ module.exports = router;
 router.get('/save', function(req, res) {
 
     var newFunnel = new FunnelModel({
-        FunnelId:01,
-        Token:"asdfdgdfg",
+        ClientID:00001,
         Description: "Es algo muy lindo",
         Title: "Objeto",
         Price: 25000,
@@ -47,8 +46,7 @@ router.get('/save', function(req, res) {
 router.post('/save', function(req, res) {
     var newFunnel = new FunnelModel();
 
-    newFunnel.FunnelId = req.body.FunnelId;
-    newFunnel.Token = req.body.Token;
+    newFunnel.ClientID = req.body.ClientID;
     newFunnel.Description = req.body.Description;
     newFunnel.Title = req.body.Title;
     newFunnel.Price = req.body.Price;
