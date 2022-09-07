@@ -38,7 +38,7 @@ router.get('/save', function(req, res) {
             console.log(error);
         }
         else {
-            res.send("Data inserted");
+            res.send(data.id);
         }
     });
 });
