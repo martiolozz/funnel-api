@@ -83,7 +83,7 @@ router.get('/findall', function(req, res) {
             res.send(data);
         }
     });  
- });
+});
 
 
 // Get Funnels by ID 
@@ -96,10 +96,10 @@ router.get('/findById/:id', function(req,res) {
     .catch(err => {
       console.log(err);
     });
- })
+})
 
- // Get Funnels By User ID
- router.get('/getFunnels/:id', function(req,res) {
+// Get Funnels By User ID
+router.get('/getFunnels/:id', function(req,res) {
     const id = req.params.id;
     FunnelModel.find().sort({ClientID:id})
     .then(doc => {
@@ -108,8 +108,9 @@ router.get('/findById/:id', function(req,res) {
       .catch(err => {
         console.log(err);
     });
- })
+})
 
+// Insert Order
 router.post('/saveOrder', function(req, res) {
     var newOrder = new OrderModel();
 
@@ -134,4 +135,16 @@ router.post('/saveOrder', function(req, res) {
             res.send(data.id);
         }
     });
- })
+})
+
+// Get Orders By User ID
+router.get('/getOrders/:id', function(req,res) {
+    const id = req.params.id;
+    OrderModel.find().sort({ClientID:id})
+    .then(doc => {
+        res.send(doc);
+      })
+      .catch(err => {
+        console.log(err);
+    });
+})
