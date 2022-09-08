@@ -55,6 +55,8 @@ router.post('/save', function(req, res) {
     newFunnel.Description = req.body.Description;
     newFunnel.Title = req.body.Title;
     newFunnel.Price = req.body.Price;
+    newFunnel.ProductID = req.body.ProductID;
+    newFunnel.DesignID = req.body.DesignID;
     newFunnel.ImageURL = req.body.ImageURL;
     newFunnel.SecondImageURL = req.body.SecondImageURL;
     newFunnel.ThirdImageURL = req.body.ThirdImageURL;
