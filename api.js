@@ -101,7 +101,7 @@ router.get('/findById/:id', function(req,res) {
 // Get Funnels By User ID
 router.get('/getFunnels/:id', function(req,res) {
     const id = req.params.id;
-    FunnelModel.find().sort({ClientID:id})
+    FunnelModel.find({ClientID:id})
     .then(doc => {
         res.send(doc);
       })
@@ -140,7 +140,7 @@ router.post('/saveOrder', function(req, res) {
 // Get Orders By User ID
 router.get('/getOrders/:id', function(req,res) {
     const id = req.params.id;
-    OrderModel.find().sort({ClientID:id})
+    OrderModel.find({ClientID:id})
     .then(doc => {
         res.send(doc);
       })
