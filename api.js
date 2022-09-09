@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
+const cors = require('cors');
 var FunnelModel = require('./funnelschema');
 var OrderModel = require('./orderschema');
  
@@ -19,6 +20,12 @@ useUnifiedTopology: true }, function(error) {
 
 module.exports = router;
 
+var corsOptions = {
+    origin: 'https://template-admin-dropi-funnel.vercel.app/',
+    methods: "GET, PUT, POST"
+}
+
+router.use(cors(corsOptions));
 
 // Save Funnel GET
 router.get('/save', function(req, res) {
