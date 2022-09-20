@@ -55,7 +55,7 @@ router.get('/save', function(req, res) {
 
 
 // Save Funnel POST
-router.post('/save', function(req, res) {
+router.post('/saveFunnel', function(req, res) {
     var newFunnel = new FunnelModel();
 
     newFunnel.ClientID = req.body.ClientID;
@@ -76,7 +76,7 @@ router.post('/save', function(req, res) {
             console.log(error);
         }
         else {
-            res.send(data.id);
+            res.location(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
         }
     });
 });
