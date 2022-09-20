@@ -76,7 +76,7 @@ router.post('/saveFunnel', function(req, res) {
             console.log(error);
         }
         else {
-            res.location(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
+            res.redirect(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
         }
     });
 });
