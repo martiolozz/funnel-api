@@ -6,7 +6,7 @@ var FunnelModel = require('./funnelschema');
 var OrderModel = require('./orderschema');
  
 // Connecting to database
-var query = "mongodb+srv://martio:Jm1125920@cluster0.ummwxjl.mongodb.net/Dropi?retryWrites=true&w=majority";
+var query = "mongodb+srv://xolarix:xolarix@cluster0.b0t8oys.mongodb.net/?retryWrites=true&w=majority";
  
 const db = (query);
 mongoose.Promise = global.Promise;
