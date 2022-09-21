@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 const cors = require('cors');
 var FunnelModel = require('./funnelschema');
+var FunnelModelTemporal = require('./funnelschematemporal');
 var OrderModel = require('./orderschema');
  
 // Connecting to database
@@ -59,25 +60,24 @@ router.post('/saveFunnel', function(req, res) {
     });
 });
 
-// Save Funnel POST
+// Save Funnel Temporal POST
 router.post('/saveFunnelTemporal', function(req, res) {
-    var newFunnel = new FunnelModel();
+    var newFunnelTemporal = new FunnelModelTemporal();
 
-    newFunnel.ClientID = req.body.ClientID;
-    newFunnel.Description = req.body.Description;
-    newFunnel.Title = req.body.Title;
-    newFunnel.Price = req.body.Price;
-    newFunnel.ProductID = req.body.ProductID;
-    newFunnel.DesignID = req.body.DesignID;
-    newFunnel.ImageURL = req.body.ImageURL;
-    newFunnel.SecondImageURL = req.body.SecondImageURL;
-    newFunnel.ThirdImageURL = req.body.ThirdImageURL;
-    newFunnel.FourthImageURL = req.body.FourthImageURL;
-    newFunnel.FifthImageURL = req.body.FifthImageURL;
-    newFunnel.SixthImageURL = req.body.SixthImageURL;
+    newFunnelTemporal.ClientID = req.body.ClientID;
+    newFunnelTemporal.Description = req.body.Description;
+    newFunnelTemporal.Title = req.body.Title;
+    newFunnelTemporal.Price = req.body.Price;
+    newFunnelTemporal.ProductID = req.body.ProductID;
+    newFunnelTemporal.ImageURL = req.body.ImageURL;
+    newFunnelTemporal.SecondImageURL = req.body.SecondImageURL;
+    newFunnelTemporal.ThirdImageURL = req.body.ThirdImageURL;
+    newFunnelTemporal.FourthImageURL = req.body.FourthImageURL;
+    newFunnelTemporal.FifthImageURL = req.body.FifthImageURL;
+    newFunnelTemporal.SixthImageURL = req.body.SixthImageURL;
 
     
-    newFunnel.save(function(err, data) {
+    newFunnelTemporal.save(function(err, data) {
         if(err) {
             console.log(error);
         }
