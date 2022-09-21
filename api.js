@@ -104,11 +104,22 @@ router.get('/findall', function(req, res) {
     });  
 });
 
-
 // Get Funnels by ID 
 router.get('/findById/:id', function(req,res) {
     const id = req.params.id;
     FunnelModel.findById(id)
+    .then(doc => {
+      res.send(doc);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+})
+
+// Get Funnels Temporals by ID 
+router.get('/findByIdTemporal/:id', function(req,res) {
+    const id = req.params.id;
+    FunnelModelTemporal.findById(id)
     .then(doc => {
       res.send(doc);
     })
