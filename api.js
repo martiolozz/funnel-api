@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
-// const cors = require('cors');
+const cors = require('cors');
 var FunnelModel = require('./funnelschema');
 var OrderModel = require('./orderschema');
  
@@ -20,39 +20,12 @@ useUnifiedTopology: true }, function(error) {
 
 module.exports = router;
 
-// var corsOptions = {
-//     origin: 'https://template-admin-dropi-funnel.vercel.app/',
-//     methods: "GET, PUT, POST"
-// }
+var corsOptions = {
+    origin: 'http://localhost:4500',
+    methods: "GET, PUT, POST"
+}
 
-// router.use(cors(corsOptions));
-
-// Save Funnel GET
-router.get('/save', function(req, res) {
-
-    var newFunnel = new FunnelModel({
-        ClientID:00001,
-        Description: "Es algo muy lindo",
-        Title: "Objeto",
-        Price: 25000,
-        ImageURL:"https://tikitiki",
-        SecondImageURL:"https://tikitiki",
-        ThirdImageURL:"https://tikitiki",
-        FourthImageURL:"https://tikitiki",
-        FifthImageURL:"https://tikitiki",
-        SixthImageURL:"https://tikitiki"
-    });
-
-    newFunnel.save(function(err, data) {
-        if(err) {
-            console.log(error);
-        }
-        else {
-            res.send(data.id);
-        }
-    });
-});
-
+router.use(cors(corsOptions));
 
 // Save Funnel POST
 router.post('/saveFunnel', function(req, res) {
@@ -71,12 +44,49 @@ router.post('/saveFunnel', function(req, res) {
     newFunnel.FifthImageURL = req.body.FifthImageURL;
     newFunnel.SixthImageURL = req.body.SixthImageURL;
 
+    
     newFunnel.save(function(err, data) {
         if(err) {
             console.log(error);
         }
         else {
-            res.redirect(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
+            // res.redirect(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
+            // res.send(data.id);
+            res.json({
+                'id': data.id
+        });
+        }
+    });
+});
+
+// Save Funnel POST
+router.post('/saveFunnelTemporal', function(req, res) {
+    var newFunnel = new FunnelModel();
+
+    newFunnel.ClientID = req.body.ClientID;
+    newFunnel.Description = req.body.Description;
+    newFunnel.Title = req.body.Title;
+    newFunnel.Price = req.body.Price;
+    newFunnel.ProductID = req.body.ProductID;
+    newFunnel.DesignID = req.body.DesignID;
+    newFunnel.ImageURL = req.body.ImageURL;
+    newFunnel.SecondImageURL = req.body.SecondImageURL;
+    newFunnel.ThirdImageURL = req.body.ThirdImageURL;
+    newFunnel.FourthImageURL = req.body.FourthImageURL;
+    newFunnel.FifthImageURL = req.body.FifthImageURL;
+    newFunnel.SixthImageURL = req.body.SixthImageURL;
+
+    
+    newFunnel.save(function(err, data) {
+        if(err) {
+            console.log(error);
+        }
+        else {
+            // res.redirect(`https://template-admin-dropi-funnel.vercel.app/${data.id}`);
+            // res.send(data.id);
+            res.json({
+                'id': data.id
+        });
         }
     });
 });
@@ -121,6 +131,8 @@ router.get('/getFunnels/:id', function(req,res) {
 
 // Insert Order
 router.post('/saveOrder', function(req, res) {
+
+    // res.header('Access-Control-Allow-Origin', '*');
     var newOrder = new OrderModel();
 
     newOrder.ClientID = req.body.ClientID;
