@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var express = require('express');
 var router = express.Router();
-const cors = require('cors');
+// const cors = require('cors');
 var FunnelModel = require('./funnelschema');
 var FunnelModelTemporal = require('./funnelschematemporal');
 var OrderModel = require('./orderschema');
@@ -21,12 +21,12 @@ useUnifiedTopology: true }, function(error) {
 
 module.exports = router;
 
-var corsOptions = {
-    origin: 'http://localhost:4500',
-    methods: "GET, PUT, POST"
-}
+// var corsOptions = {
+//     origin: 'http://localhost:4500',
+//     methods: "GET, PUT, POST"
+// }
 
-router.use(cors(corsOptions));
+// router.use(cors(corsOptions));
 
 // Save Funnel POST
 router.post('/saveFunnel', function(req, res) {
