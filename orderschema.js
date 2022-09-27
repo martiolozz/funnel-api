@@ -11,8 +11,10 @@ var OrderSchema = new mongoose.Schema({
     Phone: String,
     TotalOrder: Number,
     ProductID: Number,
+    ProductName: String,
     Quantity: Number,
-    ProductPrice: Number
+    ProductPrice: Number,
+    Date : String
 });
  
 module.exports = mongoose.model(

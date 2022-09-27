@@ -128,6 +128,18 @@ router.get('/findByIdTemporal/:id', function(req,res) {
     });
 })
 
+// Delete Temporals Funnel
+router.get('/deleteTemporalFunnel/:id', function(req,res) {
+    const id = req.params.id;
+    FunnelModelTemporal.findByIdAndDelete(id)
+    .then(doc => {
+        res.send(doc);
+      })
+      .catch(err => {
+        console.log(err);
+    });
+})
+
 // Get Funnels By User ID
 router.get('/getFunnels/:id', function(req,res) {
     const id = req.params.id;
@@ -156,8 +168,10 @@ router.post('/saveOrder', function(req, res) {
     newOrder.Phone = req.body.Phone;
     newOrder.TotalOrder = req.body.TotalOrder;
     newOrder.ProductID = req.body.ProductID;
+    newOrder.ProductName = req.body.ProductName;
     newOrder.Quantity = req.body.Quantity;
     newOrder.ProductPrice = req.body.ProductPrice;
+    newOrder.Date = req.body.Date;
 
     newOrder.save(function(err, data) {
         if(err) {
@@ -180,3 +194,16 @@ router.get('/getOrders/:id', function(req,res) {
         console.log(err);
     });
 })
+
+// Delete Orders Funnel
+router.get('/deleteOrder/:id', function(req,res) {
+    const id = req.params.id;
+    OrderModel.findByIdAndDelete(id)
+    .then(doc => {
+        res.send(doc);
+      })
+      .catch(err => {
+        console.log(err);
+    });
+})
+
